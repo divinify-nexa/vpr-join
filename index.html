@@ -160,6 +160,17 @@
   .story-photo figcaption{color:var(--muted-2);font-size:13px;margin-top:11px;letter-spacing:.03em;line-height:1.5}
   @media(max-width:760px){ .story-grid{grid-template-columns:1fr;gap:26px} }
 
+  .coach-intro{display:grid;grid-template-columns:1fr 1.05fr;gap:42px;align-items:center;margin-top:10px}
+  .coach-intro .lede{margin-top:0;max-width:none}
+  .coach-intro .cap-note{margin-top:18px;max-width:none}
+  .coach-photo{margin:0}
+  .coach-photo img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--card-line)}
+  .coach-names{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px;text-align:center}
+  .coach-names b{display:block;color:var(--ink);font-weight:600;font-size:16px}
+  .coach-names span{color:var(--muted-2);font-size:13px}
+  .coach-grid-pillars{margin-top:36px}
+  @media(max-width:760px){ .coach-intro{grid-template-columns:1fr;gap:24px} }
+
   .join{border-top:1px solid var(--card-line)}
   .form-card{background:var(--card);border:1px solid var(--card-line);border-radius:20px;padding:clamp(26px,4vw,44px);margin-top:30px;max-width:760px}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 8px}
@@ -318,13 +329,24 @@
   <div class="wrap">
     <p class="kicker" data-i18n="coach_kicker">The part most agents don't expect</p>
     <h2 class="serif" data-i18n="coach_h2">Top-tier coaching, with <span class="y">nothing to pay upfront</span>.</h2>
-    <p class="lede" style="max-width:800px" data-i18n="coach_lede">Most coaching programs charge thousands up front, and that money is gone whether it moves the needle or not. VPR built it the opposite way. You invest in it only as it produces for you, so your coach is tied to your results, not a check on day one. And because VPR is built so you keep more of what you earn, that growth lands in your pocket.</p>
-    <div class="grid">
+    <div class="coach-intro">
+      <div>
+        <p class="lede" data-i18n="coach_lede">Most coaching programs charge thousands up front, and that money is gone whether it moves the needle or not. VPR built it the opposite way. You invest in it only as it produces for you, so your coach is tied to your results, not a check on day one. And because VPR is built so you keep more of what you earn, that growth lands in your pocket.</p>
+        <p class="cap-note" data-i18n="coach_tracks">There's a track for every stage — newer agents building momentum, established producers scaling up, or private one-on-one. Brokers who actually answer and VPR's own Georgia Realty School round it out.</p>
+      </div>
+      <figure class="coach-photo">
+        <img src="vpr-coaches.jpg" alt="VPR coaches Paola Figueroa and Jessica Wilson" loading="lazy" />
+        <div class="coach-names">
+          <div><b>Paola Figueroa</b><span data-i18n="coach_role_bi">Coach · English &amp; Spanish</span></div>
+          <div><b>Jessica Wilson</b><span data-i18n="coach_role">Coach</span></div>
+        </div>
+      </figure>
+    </div>
+    <div class="grid coach-grid-pillars">
       <div class="feat coach-pillar"><i class="ti ti-cash-off" aria-hidden="true"></i><h3 data-i18n="coach_p1_h">No upfront cost</h3><p data-i18n="coach_p1_p">Start anytime with nothing out of pocket. Zero risk to begin.</p></div>
       <div class="feat coach-pillar"><i class="ti ti-chart-arrows" aria-hidden="true"></i><h3 data-i18n="coach_p2_h">Performance-based</h3><p data-i18n="coach_p2_p">You pay as it produces, at closing. Your coach only wins when you do.</p></div>
       <div class="feat coach-pillar"><i class="ti ti-player-play" aria-hidden="true"></i><h3 data-i18n="coach_p3_h">Flexible access</h3><p data-i18n="coach_p3_p">Live sessions on Zoom, recorded so you can watch on your own schedule.</p></div>
     </div>
-    <p class="cap-note" style="max-width:800px" data-i18n="coach_tracks">There's a track for every stage — newer agents building momentum, established producers scaling up, or private one-on-one. Brokers who actually answer and VPR's own Georgia Realty School round it out.</p>
     <div class="cta-row"><a class="btn btn-primary" href="#join" data-i18n="coach_cta">Get connected to coaching</a></div>
   </div>
 </section>
@@ -520,7 +542,7 @@ const I18N = {
     coach_p2_h:"Performance-based", coach_p2_p:"You pay as it produces, at closing. Your coach only wins when you do.",
     coach_p3_h:"Flexible access", coach_p3_p:"Live sessions on Zoom, recorded so you can watch on your own schedule.",
     coach_tracks:"There's a track for every stage — newer agents building momentum, established producers scaling up, or private one-on-one. Brokers who actually answer and VPR's own Georgia Realty School round it out.",
-    coach_cta:"Get connected to coaching",
+    coach_cta:"Get connected to coaching", coach_role:"Coach", coach_role_bi:"Coach · English &amp; Spanish",
     rev_kicker:"In their words", rev_h2:"Agents who already made the move.",
     story_kicker:"Why we exist", story_h2:"Built by agents who walked away from the big franchise.",
     story_lede:"In 1999, a mother-and-son team, Karen Burks and Steve Wagner, left a national franchise after nearly a decade. It had grown too big to keep up with the technology agents actually needed. So they built the company they wished they'd had: independent, Georgia-grown, and run for the agent instead of the brand. More than two decades later, that's still the whole idea.",
@@ -575,7 +597,7 @@ const I18N = {
     coach_p2_h:"Basado en resultados", coach_p2_p:"Pagas a medida que produce, al cierre. Tu coach solo gana cuando tú ganas.",
     coach_p3_h:"Acceso flexible", coach_p3_p:"Sesiones en vivo por Zoom, grabadas para que las veas cuando te convenga.",
     coach_tracks:"Hay un camino para cada etapa: agentes nuevos tomando impulso, productores consolidados creciendo, o sesiones privadas uno a uno. Brókers que de verdad responden y la propia Georgia Realty School de VPR completan el panorama.",
-    coach_cta:"Conéctate con la capacitación",
+    coach_cta:"Conéctate con la capacitación", coach_role:"Coach", coach_role_bi:"Coach · Inglés y Español",
     rev_kicker:"En sus palabras", rev_h2:"Agentes que ya dieron el paso.",
     story_kicker:"Por qué existimos", story_h2:"Creada por agentes que dejaron la gran franquicia.",
     story_lede:"En 1999, un equipo de madre e hijo, Karen Burks y Steve Wagner, dejó una franquicia nacional tras casi una década. Había crecido demasiado para mantenerse al día con la tecnología que los agentes realmente necesitaban. Así que crearon la empresa que les habría gustado tener: independiente, de Georgia, y dirigida para el agente en lugar de la marca. Más de dos décadas después, esa sigue siendo toda la idea.",
@@ -630,7 +652,7 @@ const I18N = {
     coach_p2_h:"按成效付费", coach_p2_p:"成交时按产出付费。你赢，教练才赢。",
     coach_p3_h:"灵活参与", coach_p3_p:"通过 Zoom 实时授课，并全程录制，方便你随时回看。",
     coach_tracks:"每个阶段都有对应的路径——刚起步的新人积蓄动力、成熟的高产经纪人扩大规模，或一对一私教。随叫随到的主管和 VPR 自有的 Georgia Realty School 也为你保驾护航。",
-    coach_cta:"获取辅导支持",
+    coach_cta:"获取辅导支持", coach_role:"教练", coach_role_bi:"教练 · 英语 / 西班牙语",
     rev_kicker:"他们的真实评价", rev_h2:"已经做出选择的经纪人。",
     story_kicker:"我们为何存在", story_h2:"由离开大型加盟品牌的经纪人创立。",
     story_lede:"1999 年，一对母子搭档 Karen Burks 和 Steve Wagner 在一家全国加盟品牌工作近十年后选择离开。那家公司已经大到跟不上经纪人真正需要的技术。于是他们创建了自己理想中的公司：独立、扎根佐治亚、一切为经纪人而非品牌服务。二十多年过去，这依然是它的全部理念。",
