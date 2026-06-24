@@ -153,6 +153,13 @@
   .rv-meta b{color:var(--ink);font-weight:600;font-size:14px}
   .rv-meta span{color:var(--muted-2)}
 
+  .story-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:42px;align-items:center;margin-top:6px}
+  .story-grid .lede{margin-top:20px;max-width:none}
+  .story-photo{margin:0}
+  .story-photo img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--card-line)}
+  .story-photo figcaption{color:var(--muted-2);font-size:13px;margin-top:11px;letter-spacing:.03em;line-height:1.5}
+  @media(max-width:760px){ .story-grid{grid-template-columns:1fr;gap:26px} }
+
   .join{border-top:1px solid var(--card-line)}
   .form-card{background:var(--card);border:1px solid var(--card-line);border-radius:20px;padding:clamp(26px,4vw,44px);margin-top:30px;max-width:760px}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 8px}
@@ -324,10 +331,18 @@
 
 <section class="band" id="story">
   <div class="wrap">
-    <p class="kicker" data-i18n="story_kicker">Why we exist</p>
-    <h2 class="serif" data-i18n="story_h2">Built by agents who walked away from the big franchise.</h2>
-    <p class="lede" style="max-width:780px" data-i18n="story_lede">In 1999, a mother-and-son team, Karen Burks and Steve Wagner, left a national franchise after nearly a decade. It had grown too big to keep up with the technology agents actually needed. So they built the company they wished they'd had: independent, Georgia-grown, and run for the agent instead of the brand. More than two decades later, that's still the whole idea.</p>
-    <div class="cta-row"><a class="btn btn-ghost" href="#join" data-i18n="story_cta">Talk to the people who built it</a></div>
+    <div class="story-grid">
+      <div>
+        <p class="kicker" data-i18n="story_kicker">Why we exist</p>
+        <h2 class="serif" data-i18n="story_h2">Built by agents who walked away from the big franchise.</h2>
+        <p class="lede" data-i18n="story_lede">In 1999, a mother-and-son team, Karen Burks and Steve Wagner, left a national franchise after nearly a decade. It had grown too big to keep up with the technology agents actually needed. So they built the company they wished they'd had: independent, Georgia-grown, and run for the agent instead of the brand. More than two decades later, that's still the whole idea.</p>
+        <div class="cta-row"><a class="btn btn-ghost" href="#join" data-i18n="story_cta">Talk to the people who built it</a></div>
+      </div>
+      <figure class="story-photo">
+        <img src="vpr-founders.jpg" alt="Karen Burks and Steve Wagner, the mother-and-son founders of VPR" loading="lazy" />
+        <figcaption data-i18n="story_cap">Karen Burks &amp; Steve Wagner — the mother-and-son team who founded VPR in 1999.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -509,7 +524,7 @@ const I18N = {
     rev_kicker:"In their words", rev_h2:"Agents who already made the move.",
     story_kicker:"Why we exist", story_h2:"Built by agents who walked away from the big franchise.",
     story_lede:"In 1999, a mother-and-son team, Karen Burks and Steve Wagner, left a national franchise after nearly a decade. It had grown too big to keep up with the technology agents actually needed. So they built the company they wished they'd had: independent, Georgia-grown, and run for the agent instead of the brand. More than two decades later, that's still the whole idea.",
-    story_cta:"Talk to the people who built it",
+    story_cta:"Talk to the people who built it", story_cap:"Karen Burks &amp; Steve Wagner — the mother-and-son team who founded VPR in 1999.",
     proof_kicker:"A real, established company", proof_h2:"Not a startup. Not a call center.",
     proof1_big:"1999", proof1_lbl:"Independent &amp; Georgia-owned since",
     proof2_big:"5,000+", proof2_lbl:"Agents have called VPR home",
@@ -564,7 +579,7 @@ const I18N = {
     rev_kicker:"En sus palabras", rev_h2:"Agentes que ya dieron el paso.",
     story_kicker:"Por qué existimos", story_h2:"Creada por agentes que dejaron la gran franquicia.",
     story_lede:"En 1999, un equipo de madre e hijo, Karen Burks y Steve Wagner, dejó una franquicia nacional tras casi una década. Había crecido demasiado para mantenerse al día con la tecnología que los agentes realmente necesitaban. Así que crearon la empresa que les habría gustado tener: independiente, de Georgia, y dirigida para el agente en lugar de la marca. Más de dos décadas después, esa sigue siendo toda la idea.",
-    story_cta:"Habla con quienes la crearon",
+    story_cta:"Habla con quienes la crearon", story_cap:"Karen Burks y Steve Wagner — el equipo de madre e hijo que fundó VPR en 1999.",
     proof_kicker:"Una empresa real y consolidada", proof_h2:"No es una startup. No es un call center.",
     proof1_big:"1999", proof1_lbl:"Independiente y de Georgia desde",
     proof2_big:"5,000+", proof2_lbl:"Agentes han hecho de VPR su hogar",
@@ -619,7 +634,7 @@ const I18N = {
     rev_kicker:"他们的真实评价", rev_h2:"已经做出选择的经纪人。",
     story_kicker:"我们为何存在", story_h2:"由离开大型加盟品牌的经纪人创立。",
     story_lede:"1999 年，一对母子搭档 Karen Burks 和 Steve Wagner 在一家全国加盟品牌工作近十年后选择离开。那家公司已经大到跟不上经纪人真正需要的技术。于是他们创建了自己理想中的公司：独立、扎根佐治亚、一切为经纪人而非品牌服务。二十多年过去，这依然是它的全部理念。",
-    story_cta:"与创立者对话",
+    story_cta:"与创立者对话", story_cap:"Karen Burks 与 Steve Wagner —— 于 1999 年创立 VPR 的母子搭档。",
     proof_kicker:"一家真实、稳固的公司", proof_h2:"不是初创公司，也不是呼叫中心。",
     proof1_big:"1999", proof1_lbl:"自此独立并由佐治亚本地拥有",
     proof2_big:"5,000+", proof2_lbl:"名经纪人以 VPR 为家",
