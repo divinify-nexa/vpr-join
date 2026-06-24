@@ -136,7 +136,14 @@
 
   .coach-pillar{border-color:rgba(255,222,23,.22)}
   .coach-pillar i{font-size:30px}
-  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:36px}
+  .rev-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .car-nav{display:flex;gap:10px}
+  .car-btn{width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid var(--card-line);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:21px;transition:border-color .15s,color .15s,background .15s}
+  .car-btn:hover{border-color:var(--yellow);color:var(--yellow);background:#18203a}
+  .car-viewport{overflow:hidden;margin-top:26px;cursor:grab}
+  .car-viewport.dragging{cursor:grabbing}
+  .car-track{display:flex;gap:18px;align-items:stretch;will-change:transform;touch-action:pan-y;user-select:none}
+  .car-slide{flex:0 0 min(84vw,380px)}
   .review{background:var(--card);border:1px solid var(--card-line);border-radius:18px;padding:26px;margin:0;display:flex;flex-direction:column}
   .review .stars{color:var(--yellow);font-size:15px;letter-spacing:3px;margin-bottom:15px}
   .review blockquote{color:var(--ink);font-size:15px;line-height:1.62;font-style:italic;margin:0 0 22px;flex:1}
@@ -360,29 +367,59 @@
 
 <section class="band" id="reviews">
   <div class="wrap">
-    <p class="kicker" data-i18n="rev_kicker">In their words</p>
-    <h2 class="serif" data-i18n="rev_h2">Agents who already made the move.</h2>
-    <div class="reviews">
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"The decision to move my license from Keller Williams to Virtual Properties was the best decision ever! Not only do I get to keep the majority of the commissions I work hard for, I have access to tools, resources &amp; tons of training classes. The agents are super helpful! I also love the Ambassador Program. Highly recommended!"</blockquote>
-        <figcaption><span class="rv-av">N</span><span class="rv-meta"><b>Natasha B.</b><span>Google Local Guide · 29 reviews</span></span></figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"Having been with two other realty companies before, I can truly appreciate the difference. At those places, brokers wouldn't respond in days. With VPR, I'm confident in my ability to serve clients effectively, knowing that I have their unwavering support behind me."</blockquote>
-        <figcaption><span class="rv-av">T</span><span class="rv-meta"><b>Tianjiao Karnes</b><span>Google Review · 5 stars</span></span></figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"I have been a Realtor for 28 years and have found my work home with Virtual Properties Realty. Whether you are a new agent or an experienced one like me, this is a great spot to land and grow in the business. Great place to call home!"</blockquote>
-        <figcaption><span class="rv-av">C</span><span class="rv-meta"><b>Cindy OGuin</b><span>Google Review · 5 stars</span></span></figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"I have been with VPR for a month now. It has been a smooth transition &amp; I have been given more than enough information to help me succeed in this new phase of my Real Estate Career. A special Thank You to Joseph Kalina for answering every question I had &amp; helping me understand it all!"</blockquote>
-        <figcaption><span class="rv-av">E</span><span class="rv-meta"><b>Elli Grier Hamontree</b><span>Google Local Guide · 18 reviews</span></span></figcaption>
-      </figure>
+    <div class="rev-head">
+      <div>
+        <p class="kicker" data-i18n="rev_kicker">In their words</p>
+        <h2 class="serif" data-i18n="rev_h2">Agents who already made the move.</h2>
+      </div>
+      <div class="car-nav">
+        <button class="car-btn" type="button" data-dir="-1" aria-label="Previous review"><i class="ti ti-chevron-left" aria-hidden="true"></i></button>
+        <button class="car-btn" type="button" data-dir="1" aria-label="Next review"><i class="ti ti-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="car-viewport" id="reviewCar">
+      <div class="car-track">
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"The decision to move my license from Keller Williams to Virtual Properties was the best decision ever! Not only do I get to keep the majority of the commissions I work hard for, I have access to tools, resources &amp; tons of training classes. The agents are super helpful! I also love the Ambassador Program. Highly recommended!"</blockquote>
+          <figcaption><span class="rv-av">N</span><span class="rv-meta"><b>Natasha B.</b><span>Google Local Guide · 29 reviews</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"I moved my license to Virtual Properties about a year ago from another brokerage, and it's the best decision I could have made. The company and the owners have a team, we-are-in-this-together mentality. And the broker support is what it should be, always there! No more having a broker question only to find there's no Broker on site. Best Broker support in Georgia!"</blockquote>
+          <figcaption><span class="rv-av">J</span><span class="rv-meta"><b>John Stevens</b><span>Google Review · 7 reviews</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"My experience at Virtual Properties Realty for 5 years+ has been great. The office staff and many Brokers are very accessible by email, phone or in person. The training is outstanding and covers everything an agent needs. Another big plus is there's no cost for CE courses. I'll continue to recommend VPR because I think it's the best Real Estate company on the planet."</blockquote>
+          <figcaption><span class="rv-av">C</span><span class="rv-meta"><b>Chris Alexander</b><span>Google Review · 3 reviews</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"Having been with two other realty companies before, I can truly appreciate the difference. At those places, brokers wouldn't respond in days. With VPR, I'm confident in my ability to serve clients effectively, knowing that I have their unwavering support behind me."</blockquote>
+          <figcaption><span class="rv-av">T</span><span class="rv-meta"><b>Tianjiao Karnes</b><span>Google Review · 5 stars</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"Been with VPR a year now, and it has been a really good experience. Broker Support is responsive and helpful. Back office staff are diligent and thorough. I really appreciate the compliance department's attention to detail. They really ensure all documents are executed and due diligence is being provided."</blockquote>
+          <figcaption><span class="rv-av">S</span><span class="rv-meta"><b>Shani Brown</b><span>Google Local Guide · 18 reviews</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"I have been a Realtor for 28 years and have found my work home with Virtual Properties Realty. Whether you are a new agent or an experienced one like me, this is a great spot to land and grow in the business. Great place to call home!"</blockquote>
+          <figcaption><span class="rv-av">C</span><span class="rv-meta"><b>Cindy OGuin</b><span>Google Review · 5 stars</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"It has been a very pleasing experience working with VPR. They allow you the flexibility to customize your business and choose the model that works for you. All Brokers are very responsive and helpful. I'm very happy with my association with VPR and would recommend it to any new agent. They offer great educational options."</blockquote>
+          <figcaption><span class="rv-av">N</span><span class="rv-meta"><b>Navin Tyagi</b><span>Google Review · 4 reviews</span></span></figcaption>
+        </figure>
+        <figure class="review car-slide">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>"I have been with VPR for a month now. It has been a smooth transition &amp; I have been given more than enough information to help me succeed in this new phase of my Real Estate Career. A special Thank You to Joseph Kalina for answering every question I had &amp; helping me understand it all!"</blockquote>
+          <figcaption><span class="rv-av">E</span><span class="rv-meta"><b>Elli Grier Hamontree</b><span>Google Local Guide · 18 reviews</span></span></figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -728,6 +765,71 @@ form.addEventListener('submit',async(e)=>{
   if(REDUCE||!('IntersectionObserver'in window)){blocks.forEach(b=>b.classList.add('reveal','in'));}
   else{blocks.forEach(b=>b.classList.add('reveal'));const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});blocks.forEach(b=>io.observe(b));}
   onScroll();
+})();
+</script>
+<script>
+/* ============ infinite review carousel (recycling loop) ============ */
+(function(){
+  const vp=document.getElementById('reviewCar'); if(!vp) return;
+  const track=vp.querySelector('.car-track');
+  const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let offset=0, animating=false, timer=null, dragging=false, startX=0, moved=0;
+
+  function gap(){ return parseFloat(getComputedStyle(track).gap)||18; }
+  function slot(){ return track.firstElementChild.getBoundingClientRect().width + gap(); }
+  function setX(x,anim){ track.style.transition = anim ? 'transform .55s cubic-bezier(.4,0,.2,1)' : 'none'; track.style.transform='translateX('+x+'px)'; }
+  function normalize(){
+    const w=slot(); let g=0;
+    while(offset <= -w+0.5 && g<60){ track.appendChild(track.firstElementChild); offset+=w; g++; }
+    while(offset > 0.5 && g<60){ track.insertBefore(track.lastElementChild, track.firstElementChild); offset-=w; g++; }
+    setX(offset,false);
+  }
+  function animateTo(target){
+    animating=true; setX(target,true);
+    const finish=()=>{ if(!animating) return; track.removeEventListener('transitionend',finish); offset=target; normalize(); animating=false; };
+    track.addEventListener('transitionend',finish);
+    setTimeout(finish,650); // safety if transitionend doesn't fire
+  }
+  function step(dir){ if(animating) return; animateTo(offset - dir*slot()); }
+
+  // arrows
+  document.querySelectorAll('.car-btn').forEach(b=>{
+    b.addEventListener('click',()=>{ stop(); step(parseInt(b.dataset.dir,10)||1); start(); });
+  });
+
+  // pointer drag / swipe
+  vp.addEventListener('pointerdown',e=>{
+    if(animating) return;
+    dragging=true; moved=0; startX=e.clientX; vp.classList.add('dragging');
+    try{ vp.setPointerCapture(e.pointerId); }catch(_){} stop();
+  });
+  vp.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const dx=e.clientX-startX; startX=e.clientX; moved+=dx; offset+=dx; normalize();
+  });
+  function release(){
+    if(!dragging) return;
+    dragging=false; vp.classList.remove('dragging');
+    const w=slot();
+    // snap to the nearest slot edge; complete the swipe if dragged far enough
+    if(offset <= -w/2) animateTo(-w);
+    else if(offset >= -w/2 && offset < 0) animateTo(0);
+    else normalize();
+    start();
+  }
+  vp.addEventListener('pointerup',release);
+  vp.addEventListener('pointercancel',release);
+  // stop click-throughs after a real drag
+  vp.addEventListener('click',e=>{ if(Math.abs(moved)>6){ e.preventDefault(); e.stopPropagation(); } },true);
+
+  // auto-advance
+  function start(){ if(REDUCE) return; stop(); timer=setInterval(()=>{ if(!dragging&&!animating) step(1); },5000); }
+  function stop(){ clearInterval(timer); }
+  vp.addEventListener('mouseenter',stop);
+  vp.addEventListener('mouseleave',start);
+
+  let rt; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(normalize,150); });
+  requestAnimationFrame(()=>{ normalize(); start(); });
 })();
 </script>
 </body>
