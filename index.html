@@ -365,7 +365,7 @@
     <div class="grid">
       <div class="feat"><i class="ti ti-receipt" aria-hidden="true"></i><h3 data-i18n="incl1_h">Simple, low fees</h3><p data-i18n="incl1_p">$50/month plus $30 per closing. E&amp;O coverage included, no separate line item.</p><span class="feat-fine" data-i18n="incl1_fine">(E&amp;O included on .com &amp; .net)</span></div>
       <div class="feat"><i class="ti ti-businessplan" aria-hidden="true"></i><h3 data-i18n="incl4_h">Plans from $0/month</h3><p data-i18n="incl4_p">More than one plan to fit how you actually work. Pick the structure that fits your business.</p><span class="feat-fine" data-i18n="incl4_fine">(.biz company only with 90/10 split)</span></div>
-      <div class="feat"><i class="ti ti-tools" aria-hidden="true"></i><h3 data-i18n="incl2_h">The tools, free</h3><p data-i18n="incl2_p">CRM, IDX website, and MLS access included. The same MLS and tools you already use.</p></div>
+      <div class="feat"><i class="ti ti-tools" aria-hidden="true"></i><h3 data-i18n="incl2_h">The tools, free</h3><p data-i18n="incl2_p">CRM, IDX website, MLS access, drip marketing, plus so much more. The same MLS and tools you already use.</p></div>
       <div class="feat"><i class="ti ti-calendar-off" aria-hidden="true"></i><h3 data-i18n="incl3_h">No busywork</h3><p data-i18n="incl3_p">No floor time. No mandatory meetings. No micromanagement. Run your business your way.</p></div>
     </div>
   </div>
@@ -583,7 +583,7 @@ const I18N = {
     incl1_fine:"(E&amp;O included on .com &amp; .net)", incl4_fine:"(.biz company only with 90/10 split)",
     incl_kicker:"No surprises", incl_h2:"What's included",
     incl1_h:"Simple, low fees", incl1_p:"$50/month plus $30 per closing. E&amp;O coverage included, no separate line item.",
-    incl2_h:"The tools, free", incl2_p:"CRM, IDX website, and MLS access included. The same MLS and tools you already use.",
+    incl2_h:"The tools, free", incl2_p:"CRM, IDX website, MLS access, drip marketing, plus so much more. The same MLS and tools you already use.",
     incl3_h:"No busywork", incl3_p:"No floor time. No mandatory meetings. No micromanagement. Run your business your way.",
     incl4_h:"Plans from $0/month", incl4_p:"More than one plan to fit how you actually work. Pick the structure that fits your business.",
     coach_kicker:"The part most agents don't expect", coach_h2:"Top-tier coaching, with <span class='y'>nothing to pay upfront</span>.",
@@ -642,7 +642,7 @@ const I18N = {
     incl1_fine:"(Cobertura E&amp;O incluida en .com y .net)", incl4_fine:"(Solo empresa .biz con división 90/10)",
     incl_kicker:"Sin sorpresas", incl_h2:"Lo que incluye",
     incl1_h:"Cuotas bajas y claras", incl1_p:"$50 al mes más $30 por cierre. Cobertura E&amp;O incluida, sin cargos aparte.",
-    incl2_h:"Las herramientas, gratis", incl2_p:"CRM, sitio web IDX y acceso al MLS incluidos. El mismo MLS y las herramientas que ya usas.",
+    incl2_h:"Las herramientas, gratis", incl2_p:"CRM, sitio web IDX, acceso al MLS, marketing por goteo y mucho más. El mismo MLS y las herramientas que ya usas.",
     incl3_h:"Sin trámites inútiles", incl3_p:"Sin horas de guardia. Sin reuniones obligatorias. Sin microgestión. Dirige tu negocio a tu manera.",
     incl4_h:"Planes desde $0/mes", incl4_p:"Más de un plan para adaptarse a cómo trabajas. Elige la estructura que le sirva a tu negocio.",
     coach_kicker:"Lo que muchos agentes no esperan", coach_h2:"Capacitación de primer nivel, sin <span class='y'>nada que pagar por adelantado</span>.",
@@ -701,7 +701,7 @@ const I18N = {
     incl1_fine:"（.com 与 .net 含 E&amp;O 保险）", incl4_fine:"（仅限 .biz 公司搭配 90/10 分成）",
     incl_kicker:"没有意外", incl_h2:"包含哪些",
     incl1_h:"简单、低费用", incl1_p:"每月 $50，外加每笔成交 $30。含 E&amp;O（错误与遗漏）保险，无额外收费。",
-    incl2_h:"工具全免费", incl2_p:"含 CRM、IDX 网站和 MLS 权限。就是你已经在用的同一个 MLS 和工具。",
+    incl2_h:"工具全免费", incl2_p:"含 CRM、IDX 网站、MLS 权限、滴灌式营销，以及更多。就是你已经在用的同一个 MLS 和工具。",
     incl3_h:"没有繁文缛节", incl3_p:"无值班时间。无强制会议。不被微观管理。按你自己的方式经营。",
     incl4_h:"方案低至 $0/月", incl4_p:"多种方案，贴合你真实的工作方式。选择最适合你业务的结构。",
     coach_kicker:"多数经纪人意想不到的一点", coach_h2:"顶级辅导，<span class='y'>前期无需付费</span>。",
@@ -823,8 +823,8 @@ const OFFER = {
           fine:"Not eligible for the Ambassador program." },
         team:{ teams:[
           {name:"Partner Plan",detail:"$0/month. 90/10 split to an $8,850 team cap, then 100%."},
-          {name:"Team Plan",detail:"$49/month. 100% per agent plus $200/transaction. Everyone can be an Ambassador."},
-          {name:"Team Leader",detail:"$295/month leader, $200/month per member. 100% split."}
+          {name:"Team Plan 1",detail:"$49/month. 100% per agent plus $200/transaction. Everyone can be an Ambassador."},
+          {name:"Team Plan 2",detail:"$295/month leader, $200/month per member. 100% split."}
         ], fine:"Someone on the VPR team helps you pick the right setup." }
       },
       es: {
@@ -842,8 +842,8 @@ const OFFER = {
           fine:"No elegible para el programa Ambassador." },
         team:{ teams:[
           {name:"Plan Partner",detail:"$0/mes. División 90/10 hasta un tope de equipo de $8,850, luego 100%."},
-          {name:"Plan Team",detail:"$49/mes. 100% por agente más $200/transacción. Todos pueden ser Ambassador."},
-          {name:"Líder de Equipo",detail:"$295/mes el líder, $200/mes por miembro. División 100%."}
+          {name:"Plan de Equipo 1",detail:"$49/mes. 100% por agente más $200/transacción. Todos pueden ser Ambassador."},
+          {name:"Plan de Equipo 2",detail:"$295/mes el líder, $200/mes por miembro. División 100%."}
         ], fine:"Alguien del equipo de VPR te ayuda a elegir la configuración adecuada." }
       },
       zh: {
@@ -861,8 +861,8 @@ const OFFER = {
           fine:"不可参加 Ambassador 大使计划。" },
         team:{ teams:[
           {name:"合伙方案",detail:"每月 $0。90/10 分成至团队封顶 $8,850，之后 100%。"},
-          {name:"团队方案",detail:"每月 $49。每位经纪 100% 加每笔交易 $200。所有成员均可成为大使。"},
-          {name:"团队负责人",detail:"负责人每月 $295，成员每月 $200。100% 分成。"}
+          {name:"团队方案一",detail:"每月 $49。每位经纪 100% 加每笔交易 $200。所有成员均可成为大使。"},
+          {name:"团队方案二",detail:"负责人每月 $295，成员每月 $200。100% 分成。"}
         ], fine:"VPR 团队会帮你选择合适的配置。" }
       }
     }
