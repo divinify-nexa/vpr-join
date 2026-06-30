@@ -209,6 +209,34 @@
     .cta-row .btn{width:100%}
     .chooser-grid{grid-template-columns:1fr}
   }
+  /* ---- the offer: two-step tabbed selector ---- */
+  .offer-intro{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:680px;margin:18px 0 6px}
+  .offer-step{margin-top:30px}
+  .offer-step-label{display:flex;align-items:center;gap:12px;color:var(--ink);font-weight:600;font-size:17px;margin-bottom:14px}
+  .offer-step-num{width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#0C1222;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto}
+  .offer-tabs{display:flex;flex-wrap:wrap;gap:10px}
+  .offer-tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--card-line);color:var(--muted);font-family:inherit;font-weight:600;font-size:15px;padding:11px 20px;border-radius:12px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .offer-tab:hover{color:var(--ink);border-color:rgba(255,222,23,.45)}
+  .offer-tab.active{background:var(--yellow);color:#0C1222;border-color:var(--yellow)}
+  .offer-panel{background:var(--card);border:1px solid var(--card-line);border-radius:18px;padding:clamp(22px,3vw,30px);margin-top:16px}
+  .offer-price{color:var(--yellow);font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(26px,4vw,36px);line-height:1}
+  html[lang="zh"] .offer-price{font-family:'Noto Sans SC',serif}
+  .offer-price small{display:block;color:var(--muted-2);font-family:'Poppins','Noto Sans SC',sans-serif;font-weight:500;font-size:14px;margin-top:6px}
+  .offer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+  .offer-col h4{display:flex;align-items:center;gap:9px;color:var(--ink);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+  .offer-col h4 i{font-size:18px}
+  .offer-col h4 .ic-pay{color:var(--muted-2)}
+  .offer-col h4 .ic-get{color:var(--green)}
+  .offer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .offer-col li{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:15px;line-height:1.5}
+  .offer-col li i{font-size:18px;flex:0 0 auto;margin-top:1px}
+  .offer-col li .li-pay{color:var(--muted-2)}
+  .offer-col li .li-get{color:var(--green)}
+  .offer-fine{color:var(--faint);font-size:12.5px;line-height:1.5;margin-top:16px}
+  .offer-total{color:var(--muted);font-size:16px;margin-top:24px;padding:16px 20px;background:rgba(255,222,23,.06);border:1px solid rgba(255,222,23,.18);border-radius:14px}
+  .offer-total b{color:var(--ink);font-weight:600}
+  .feat-fine{display:block;color:var(--faint);font-size:11.5px;line-height:1.4;margin-top:10px}
+  @media(max-width:620px){ .offer-cols{grid-template-columns:1fr;gap:18px} }
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 </style>
@@ -218,7 +246,7 @@
 <header class="nav">
   <div class="wrap">
     <div class="nav-left">
-      <img src="data:image/png;base64,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" alt="Virtual Properties Realty" />
+      <img src="__VPR_LOGO_DATA_URI__" alt="Virtual Properties Realty" />
     </div>
     <div class="nav-center">
       <a class="nav-phone" href="tel:+14703001764"><span data-i18n="nav_phone">Talk to a real person</span> · <span class="y">(470) 300-1764</span></a>
@@ -300,14 +328,22 @@
 <section class="band" id="keep">
   <div class="wrap">
     <p class="kicker" data-i18n="keep_kicker">The offer</p>
-    <h2 class="serif" data-i18n="keep_h2">Pay in to <span class="y">$5,900</span>. Then keep 100%.</h2>
-    <p class="cap-note" data-i18n="keep_note">You split 90/10 only until you've paid $5,900 into the company for the year. After that, you keep 100% of every commission through the rest of your anniversary year.</p>
-    <div class="cap-head" data-i18n="keep_caphead">Cap to keep 100%</div>
-    <div class="row"><span class="name">Keller Williams</span><span class="price">$18,000+*</span></div>
-    <div class="row"><span class="name">eXp Realty</span><span class="price">$16,000</span></div>
-    <div class="row"><span class="name">Real Broker</span><span class="price">$12,000</span></div>
-    <div class="row vpr"><span class="name"><span class="check"><i class="ti ti-check" aria-hidden="true"></i></span> VPR</span><span class="price">$5,900</span></div>
-    <p class="disclaimer" data-i18n="keep_disc">Caps to reach 100%, as publicly listed. Figures vary by plan, market, and team. Verify before relying on them.</p>
+    <h2 class="serif" data-i18n="keep_h2">Build your plan in <span class="y">two steps</span>.</h2>
+    <p class="offer-intro" data-i18n="offer_intro">It's simple. First you pick your company. Then you pick your commission plan. Your monthly cost is just those two added together. Tap a tab to see what you pay and what you get.</p>
+
+    <div class="offer-step">
+      <div class="offer-step-label"><span class="offer-step-num">1</span> <span data-i18n="offer_step1">Pick your company</span></div>
+      <div class="offer-tabs" id="companyTabs" role="tablist"></div>
+      <div class="offer-panel" id="companyPanel"></div>
+    </div>
+
+    <div class="offer-step">
+      <div class="offer-step-label"><span class="offer-step-num">2</span> <span data-i18n="offer_step2">Pick your commission plan</span></div>
+      <div class="offer-tabs" id="commissionTabs" role="tablist"></div>
+      <div class="offer-panel" id="commissionPanel"></div>
+    </div>
+
+    <p class="offer-total" data-i18n="offer_total"><b>Your monthly cost = company fee + commission plan fee.</b> Not sure which combo fits you? That is exactly what a quick call is for.</p>
     <div class="cta-row"><a class="btn btn-primary" href="#join" data-i18n="keep_cta">See exactly what you'd keep</a></div>
   </div>
 </section>
@@ -317,10 +353,10 @@
     <p class="kicker" data-i18n="incl_kicker">No surprises</p>
     <h2 class="serif" data-i18n="incl_h2">What's included</h2>
     <div class="grid">
-      <div class="feat"><i class="ti ti-receipt" aria-hidden="true"></i><h3 data-i18n="incl1_h">Simple, low fees</h3><p data-i18n="incl1_p">$50/month plus $30 per closing. E&amp;O coverage included, no separate line item.</p></div>
+      <div class="feat"><i class="ti ti-receipt" aria-hidden="true"></i><h3 data-i18n="incl1_h">Simple, low fees</h3><p data-i18n="incl1_p">$50/month plus $30 per closing. E&amp;O coverage included, no separate line item.</p><span class="feat-fine" data-i18n="incl1_fine">(E&amp;O included on .com &amp; .net)</span></div>
+      <div class="feat"><i class="ti ti-businessplan" aria-hidden="true"></i><h3 data-i18n="incl4_h">Plans from $0/month</h3><p data-i18n="incl4_p">More than one plan to fit how you actually work. Pick the structure that fits your business.</p><span class="feat-fine" data-i18n="incl4_fine">(.biz company only with 90/10 split)</span></div>
       <div class="feat"><i class="ti ti-tools" aria-hidden="true"></i><h3 data-i18n="incl2_h">The tools, free</h3><p data-i18n="incl2_p">CRM, IDX website, and MLS access included. The same MLS and tools you already use.</p></div>
       <div class="feat"><i class="ti ti-calendar-off" aria-hidden="true"></i><h3 data-i18n="incl3_h">No busywork</h3><p data-i18n="incl3_p">No floor time. No mandatory meetings. No micromanagement. Run your business your way.</p></div>
-      <div class="feat"><i class="ti ti-businessplan" aria-hidden="true"></i><h3 data-i18n="incl4_h">Plans from $0/month</h3><p data-i18n="incl4_p">More than one plan to fit how you actually work. Pick the structure that fits your business.</p></div>
     </div>
   </div>
 </section>
@@ -526,11 +562,15 @@ const I18N = {
     cost_kicker:"The math most agents skip",
     cost_h2:"What is your split <span class='y'>really</span> costing you?",
     cost_lede:"Every closing, your brokerage takes its cut. Year after year, that adds up to real money you never see again. And at some shops, the broker is competing with you for the same leads. It's worth knowing the number before you sign another year of it.",
-    keep_kicker:"The offer", keep_h2:"Pay in to <span class='y'>$5,900</span>. Then keep 100%.",
+    keep_kicker:"The offer", keep_h2:"Build your plan in <span class='y'>two steps</span>.",
     keep_note:"You split 90/10 only until you've paid $5,900 into the company for the year. After that, you keep 100% of every commission through the rest of your anniversary year.",
     keep_caphead:"Cap to keep 100%",
     keep_disc:"Caps to reach 100%, as publicly listed. Figures vary by plan, market, and team. Verify before relying on them.",
     keep_cta:"See exactly what you'd keep",
+    offer_intro:"It's simple. First you pick your company. Then you pick your commission plan. Your monthly cost is just those two added together. Tap a tab to see what you pay and what you get.",
+    offer_step1:"Pick your company", offer_step2:"Pick your commission plan",
+    offer_total:"<b>Your monthly cost = company fee + commission plan fee.</b> Not sure which combo fits you? That is exactly what a quick call is for.",
+    incl1_fine:"(E&amp;O included on .com &amp; .net)", incl4_fine:"(.biz company only with 90/10 split)",
     incl_kicker:"No surprises", incl_h2:"What's included",
     incl1_h:"Simple, low fees", incl1_p:"$50/month plus $30 per closing. E&amp;O coverage included, no separate line item.",
     incl2_h:"The tools, free", incl2_p:"CRM, IDX website, and MLS access included. The same MLS and tools you already use.",
@@ -581,11 +621,15 @@ const I18N = {
     cost_kicker:"La cuenta que muchos agentes evitan",
     cost_h2:"¿Cuánto te está <span class='y'>costando</span> de verdad tu comisión compartida?",
     cost_lede:"En cada cierre, tu correduría se lleva su parte. Año tras año, eso se convierte en dinero real que nunca vuelves a ver. Y en algunas, el bróker compite contigo por los mismos clientes. Vale la pena saber el número antes de firmar otro año así.",
-    keep_kicker:"La oferta", keep_h2:"Paga hasta <span class='y'>$5,900</span>. Luego conserva el 100%.",
+    keep_kicker:"La oferta", keep_h2:"Arma tu plan en <span class='y'>dos pasos</span>.",
     keep_note:"Compartes 90/10 solo hasta que hayas aportado $5,900 a la empresa en el año. Después de eso, conservas el 100% de cada comisión durante el resto de tu año de aniversario.",
     keep_caphead:"Tope para conservar el 100%",
     keep_disc:"Topes para llegar al 100%, según información pública. Las cifras varían por plan, mercado y equipo. Verifícalas antes de confiar en ellas.",
     keep_cta:"Mira exactamente lo que conservarías",
+    offer_intro:"Es sencillo. Primero eliges tu empresa. Luego eliges tu plan de comisiones. Tu costo mensual es solo esos dos sumados. Toca una pestaña para ver lo que pagas y lo que recibes.",
+    offer_step1:"Elige tu empresa", offer_step2:"Elige tu plan de comisiones",
+    offer_total:"<b>Tu costo mensual = cuota de la empresa + cuota del plan de comisiones.</b> ¿No sabes qué combinación te conviene? Para eso es justamente una llamada rápida.",
+    incl1_fine:"(Cobertura E&amp;O incluida en .com y .net)", incl4_fine:"(Solo empresa .biz con división 90/10)",
     incl_kicker:"Sin sorpresas", incl_h2:"Lo que incluye",
     incl1_h:"Cuotas bajas y claras", incl1_p:"$50 al mes más $30 por cierre. Cobertura E&amp;O incluida, sin cargos aparte.",
     incl2_h:"Las herramientas, gratis", incl2_p:"CRM, sitio web IDX y acceso al MLS incluidos. El mismo MLS y las herramientas que ya usas.",
@@ -636,11 +680,15 @@ const I18N = {
     cost_kicker:"多数经纪人忽略的算术",
     cost_h2:"你的分成<span class='y'>到底</span>让你损失了多少？",
     cost_lede:"每成交一单，经纪公司都要抽成。年复一年，那是你再也看不到的真金白银。在有些公司，主管经纪人还会和你争抢同样的客户。在再签一年之前，值得先把这笔账算清楚。",
-    keep_kicker:"我们的方案", keep_h2:"缴满 <span class='y'>$5,900</span>，之后 100% 归你。",
+    keep_kicker:"我们的方案", keep_h2:"<span class='y'>两步</span>，搭建你的方案。",
     keep_note:"你只需按 90/10 分成，直到当年向公司缴满 $5,900。此后，在你的周年年度内，每一笔佣金都 100% 归你。",
     keep_caphead:"达到100%的封顶额",
     keep_disc:"达到 100% 所需的封顶额，依据公开资料。具体数字因方案、市场和团队而异。请在依赖之前自行核实。",
     keep_cta:"看看你究竟能留下多少",
+    offer_intro:"很简单。先选择你的公司，再选择你的佣金方案。你的月费就是这两项相加。点击标签，查看你需要付什么、能得到什么。",
+    offer_step1:"选择你的公司", offer_step2:"选择你的佣金方案",
+    offer_total:"<b>你的月费 = 公司费用 + 佣金方案费用。</b>不确定哪种组合适合你？一通简短的电话正是为此而设。",
+    incl1_fine:"（.com 与 .net 含 E&amp;O 保险）", incl4_fine:"（仅限 .biz 公司搭配 90/10 分成）",
     incl_kicker:"没有意外", incl_h2:"包含哪些",
     incl1_h:"简单、低费用", incl1_p:"每月 $50，外加每笔成交 $30。含 E&amp;O（错误与遗漏）保险，无额外收费。",
     incl2_h:"工具全免费", incl2_p:"含 CRM、IDX 网站和 MLS 权限。就是你已经在用的同一个 MLS 和工具。",
@@ -692,10 +740,173 @@ function applyLang(lang){
   });
   document.querySelectorAll('.lang-btn').forEach(b=> b.classList.toggle('active', b.getAttribute('data-lang')===lang));
   try{ localStorage.setItem('vpr_lang', lang); }catch(e){}
+  if(typeof renderOffer==='function'){ try{ renderOffer(lang); }catch(e){} }
 }
 document.querySelectorAll('.lang-btn').forEach(b=>{
   b.addEventListener('click', ()=> applyLang(b.getAttribute('data-lang')));
 });
+
+/* ============ THE OFFER: two-step tabbed selector ============ */
+const OFFER = {
+  company: {
+    order: ['com','net','biz'],
+    labels: { com:'.COM', net:'.NET', biz:'.BIZ' },
+    data: {
+      en: {
+        com:{ price:"$50<small>per month</small>",
+          pay:["$50 / month","$30 per closing","Board of REALTORS dues (paid to the board)"],
+          get:["FMLS + GAMLS (full Georgia MLS)","E&amp;O insurance included","Free CRM, IDX website &amp; GSCCCA","Passive residual income"] },
+        net:{ price:"$50<small>per month</small>",
+          pay:["$50 / month","$30 per closing"],
+          get:["FMLS + GAMLS (full Georgia MLS)","E&amp;O insurance included","No Board of REALTORS required","Free CRM, IDX website &amp; GSCCCA"] },
+        biz:{ price:"$98<small>per year</small>",
+          pay:["$98 / year","$30 per closing","$35 per transaction for E&amp;O"],
+          get:["FMLS access","Free CRM, IDX website &amp; GSCCCA","Lowest-cost way to hold your license"],
+          fine:"No GAMLS or Board of REALTORS on this firm." }
+      },
+      es: {
+        com:{ price:"$50<small>al mes</small>",
+          pay:["$50 / mes","$30 por cierre","Cuota del Board of REALTORS (se paga al Board)"],
+          get:["FMLS + GAMLS (MLS completo de Georgia)","Seguro E&amp;O incluido","CRM, sitio IDX y GSCCCA gratis","Ingreso residual pasivo"] },
+        net:{ price:"$50<small>al mes</small>",
+          pay:["$50 / mes","$30 por cierre"],
+          get:["FMLS + GAMLS (MLS completo de Georgia)","Seguro E&amp;O incluido","No requiere Board of REALTORS","CRM, sitio IDX y GSCCCA gratis"] },
+        biz:{ price:"$98<small>al año</small>",
+          pay:["$98 / año","$30 por cierre","$35 por transacción para E&amp;O"],
+          get:["Acceso a FMLS","CRM, sitio IDX y GSCCCA gratis","La forma más económica de mantener tu licencia"],
+          fine:"Esta firma no incluye GAMLS ni Board of REALTORS." }
+      },
+      zh: {
+        com:{ price:"$50<small>每月</small>",
+          pay:["每月 $50","每笔成交 $30","REALTORS 协会会费（直接付给协会）"],
+          get:["FMLS + GAMLS（佐治亚完整 MLS）","含 E&amp;O 保险","免费 CRM、IDX 网站和 GSCCCA","被动持续收入"] },
+        net:{ price:"$50<small>每月</small>",
+          pay:["每月 $50","每笔成交 $30"],
+          get:["FMLS + GAMLS（佐治亚完整 MLS）","含 E&amp;O 保险","无需加入 REALTORS 协会","免费 CRM、IDX 网站和 GSCCCA"] },
+        biz:{ price:"$98<small>每年</small>",
+          pay:["每年 $98","每笔成交 $30","E&amp;O 每笔交易 $35"],
+          get:["FMLS 权限","免费 CRM、IDX 网站和 GSCCCA","持有执照成本最低的方式"],
+          fine:"此公司不含 GAMLS 或 REALTORS 协会。" }
+      }
+    }
+  },
+  commission: {
+    order: ['full','split','flat','team'],
+    labels: {
+      en:{ full:"100% Commission", split:"90/10 Split", flat:"100% \u00b7 $200/transaction", team:"Team Plans" },
+      es:{ full:"100% Comisión", split:"División 90/10", flat:"100% \u00b7 $200/transacción", team:"Planes de equipo" },
+      zh:{ full:"100% 佣金", split:"90/10 分成", flat:"100% \u00b7 每笔 $200", team:"团队方案" }
+    },
+    data: {
+      en: {
+        full:{ price:"$295<small>per month</small>",
+          pay:["$295 / month","No cap to buy in"],
+          get:["Keep 100% of every commission","Unlimited transactions"],
+          fine:"Rentals and leases are excluded." },
+        split:{ price:"$0<small>per month</small>",
+          pay:["$0 / month","90/10 split until you reach $5,900"],
+          get:["After $5,900, keep 100% the rest of your year","$10,000 commercial cap"],
+          fine:"Cap is on residential sales and resets on your anniversary date." },
+        flat:{ price:"$49<small>per month</small>",
+          pay:["$49 / month","$200 per transaction"],
+          get:["Keep 100% of every commission","$10,000 commercial cap"],
+          fine:"Not eligible for the Ambassador program." },
+        team:{ teams:[
+          {name:"Partner Plan",detail:"$0/month. 90/10 split to an $8,850 team cap, then 100%."},
+          {name:"Team Plan",detail:"$49/month. 100% per agent plus $200/transaction. Everyone can be an Ambassador."},
+          {name:"Team Leader",detail:"$295/month leader, $200/month per member. 100% split."}
+        ], fine:"Someone on the VPR team helps you pick the right setup." }
+      },
+      es: {
+        full:{ price:"$295<small>al mes</small>",
+          pay:["$295 / mes","Sin tope de entrada"],
+          get:["Conserva el 100% de cada comisión","Transacciones ilimitadas"],
+          fine:"Se excluyen rentas y arrendamientos." },
+        split:{ price:"$0<small>al mes</small>",
+          pay:["$0 / mes","División 90/10 hasta llegar a $5,900"],
+          get:["Tras $5,900, conserva el 100% el resto de tu año","Tope comercial de $10,000"],
+          fine:"El tope es sobre ventas residenciales y se reinicia en tu aniversario." },
+        flat:{ price:"$49<small>al mes</small>",
+          pay:["$49 / mes","$200 por transacción"],
+          get:["Conserva el 100% de cada comisión","Tope comercial de $10,000"],
+          fine:"No elegible para el programa Ambassador." },
+        team:{ teams:[
+          {name:"Plan Partner",detail:"$0/mes. División 90/10 hasta un tope de equipo de $8,850, luego 100%."},
+          {name:"Plan Team",detail:"$49/mes. 100% por agente más $200/transacción. Todos pueden ser Ambassador."},
+          {name:"Líder de Equipo",detail:"$295/mes el líder, $200/mes por miembro. División 100%."}
+        ], fine:"Alguien del equipo de VPR te ayuda a elegir la configuración adecuada." }
+      },
+      zh: {
+        full:{ price:"$295<small>每月</small>",
+          pay:["每月 $295","无需缴纳封顶买断"],
+          get:["每一笔佣金 100% 归你","成交单数不限"],
+          fine:"不含出租与租赁。" },
+        split:{ price:"$0<small>每月</small>",
+          pay:["每月 $0","按 90/10 分成，直到缴满 $5,900"],
+          get:["缴满 $5,900 后，本年度其余佣金 100% 归你","商业封顶 $10,000"],
+          fine:"封顶针对住宅销售，按你的周年日重置。" },
+        flat:{ price:"$49<small>每月</small>",
+          pay:["每月 $49","每笔交易 $200"],
+          get:["每一笔佣金 100% 归你","商业封顶 $10,000"],
+          fine:"不可参加 Ambassador 大使计划。" },
+        team:{ teams:[
+          {name:"合伙方案",detail:"每月 $0。90/10 分成至团队封顶 $8,850，之后 100%。"},
+          {name:"团队方案",detail:"每月 $49。每位经纪 100% 加每笔交易 $200。所有成员均可成为大使。"},
+          {name:"团队负责人",detail:"负责人每月 $295，成员每月 $200。100% 分成。"}
+        ], fine:"VPR 团队会帮你选择合适的配置。" }
+      }
+    }
+  },
+  colLabels: {
+    en:{ pay:"What you pay", get:"What you get", teamhead:"Team options" },
+    es:{ pay:"Lo que pagas", get:"Lo que recibes", teamhead:"Opciones de equipo" },
+    zh:{ pay:"你需要付", get:"你能得到", teamhead:"团队方案" }
+  }
+};
+function offerLi(items, kind){
+  const icon = kind==='pay' ? 'ti-point-filled' : 'ti-check';
+  const cls  = kind==='pay' ? 'li-pay' : 'li-get';
+  return items.map(t=>'<li><i class="ti '+icon+' '+cls+'" aria-hidden="true"></i><span>'+t+'</span></li>').join('');
+}
+function offerPanel(d, lang){
+  const c = OFFER.colLabels[lang] || OFFER.colLabels.en;
+  if(d.teams){
+    const rows = d.teams.map(t=>'<li><i class="ti ti-users li-get" aria-hidden="true"></i><span><b style="color:var(--ink)">'+t.name+'</b> \u2014 '+t.detail+'</span></li>').join('');
+    const tfine = d.fine ? '<p class="offer-fine">'+d.fine+'</p>' : '';
+    return '<div class="offer-col" style="grid-column:1/-1"><h4><i class="ti ti-users ic-get" aria-hidden="true"></i>'+c.teamhead+'</h4><ul>'+rows+'</ul></div>'+tfine;
+  }
+  const price = d.price ? '<div class="offer-price">'+d.price+'</div>' : '';
+  const fine  = d.fine  ? '<p class="offer-fine">'+d.fine+'</p>' : '';
+  return price+'<div class="offer-cols">'+
+    '<div class="offer-col"><h4><i class="ti ti-wallet ic-pay" aria-hidden="true"></i>'+c.pay+'</h4><ul>'+offerLi(d.pay,'pay')+'</ul></div>'+
+    '<div class="offer-col"><h4><i class="ti ti-gift ic-get" aria-hidden="true"></i>'+c.get+'</h4><ul>'+offerLi(d.get,'get')+'</ul></div>'+
+    '</div>'+fine;
+}
+let activeCompany='com', activeCommission='full';
+function renderOffer(lang){
+  if(!OFFER.company.data[lang]) lang='en';
+  const cTabs=document.getElementById('companyTabs'), cPanel=document.getElementById('companyPanel'),
+        mTabs=document.getElementById('commissionTabs'), mPanel=document.getElementById('commissionPanel');
+  if(!cTabs||!cPanel||!mTabs||!mPanel) return;
+  cTabs.innerHTML = OFFER.company.order.map(k=>'<button class="offer-tab'+(k===activeCompany?' active':'')+'" role="tab" type="button" data-key="'+k+'">'+OFFER.company.labels[k]+'</button>').join('');
+  cPanel.innerHTML = offerPanel(OFFER.company.data[lang][activeCompany], lang);
+  const mlab = OFFER.commission.labels[lang] || OFFER.commission.labels.en;
+  mTabs.innerHTML = OFFER.commission.order.map(k=>'<button class="offer-tab'+(k===activeCommission?' active':'')+'" role="tab" type="button" data-key="'+k+'">'+mlab[k]+'</button>').join('');
+  mPanel.innerHTML = offerPanel(OFFER.commission.data[lang][activeCommission], lang);
+  cTabs.querySelectorAll('.offer-tab').forEach(b=>b.addEventListener('click',()=>{
+    activeCompany=b.dataset.key;
+    cTabs.querySelectorAll('.offer-tab').forEach(x=>x.classList.toggle('active',x===b));
+    const L = OFFER.company.data[LANG]?LANG:'en';
+    cPanel.innerHTML=offerPanel(OFFER.company.data[L][activeCompany], L);
+  }));
+  mTabs.querySelectorAll('.offer-tab').forEach(b=>b.addEventListener('click',()=>{
+    activeCommission=b.dataset.key;
+    mTabs.querySelectorAll('.offer-tab').forEach(x=>x.classList.toggle('active',x===b));
+    const L = OFFER.commission.data[LANG]?LANG:'en';
+    mPanel.innerHTML=offerPanel(OFFER.commission.data[L][activeCommission], L);
+  }));
+}
+
 (function(){ let saved='en'; try{ saved = localStorage.getItem('vpr_lang') || 'en'; }catch(e){} applyLang(saved); })();
 </script>
 
